@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background: #f3e5f5;      
+    }
+    #wrap {
+      width: 100%; 
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+    
+    div{
+      float:left;
+    }
+    .cause{
+      left: 23.5%;
+      border:0.1mm solid;
+    }
+    .number{
+      left: 40%;
+      border:0.1mm solid;
+    }
+    
+
+    #navigation {
+      clear: both; width: 100%; height: 50px; background: #492d80;
+      margin-top: 50px;
+      position:absolute;
+      bottom:0;
+    }
+    #pills-tab {
+      width: 100%;
+    }
+    .nav-item {
+      width: 20%; 
+      font-size: x-large;
+    }
+    p {
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    @media (min-width: 416px){
+      #wrap {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%)
+      }
+
+      .cause {
+        width:164px; 
+        height:268px; 
+        overflow:hidden;
+        border:0.1mm solid;
+      }
+
+      #fc {
+        position:relative; 
+        top:-1033px; 
+        left:-420px;
+        width: 1000px;
+        height: 1300px;
+      }
+
+      .number {
+        width:280px;
+        height:300px; 
+        overflow:hidden;
+      }
+     
+      #fe {
+        position:relative;
+        top:-690px; 
+        left:-410px;
+        width: 2000px; 
+        height: 990px;
+      }
+
+      .cause_w {
+        margin-right: 50px;
+      }
+      
+      .number_w {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+
+      .static_w {
+        margin-left: 50px;
+      }
+      .static {
+      line-height: 360px;
+      text-align: center;
+      }
+    }
+
+    @media screen and (max-width: 415px) and (min-width: 321px) {
+      h1, hr{
+        display: none;
+      }
+      #wrap {
+        display: block;
+      }
+      p {
+        margin-bottom: 8px;
+      }
+
+      .cause {
+        width:164px; 
+        height:268px; 
+        overflow:hidden;
+        border:0.1mm solid;
+      }
+
+      #fc {
+        position: relative;; 
+        top:-1033px; 
+        left:-420px;
+        width: 1000px;
+        height: 1300px;
+      }
+
+      .number {
+        width:280px;
+        height:300px; 
+        overflow:hidden;
+      }
+     
+      #fe {
+        position:relative;
+        top:-690px; 
+        left:-410px;
+        width: 2000px; 
+        height: 990px;
+      }
+
+      .cause_w {
+        margin-left: 30%;
+        margin-right: 30%;
+        
+      }
+      .number_w {
+        margin-left: 16%;
+        margin-right: 16%;
+      }
+      .static_w {
+        margin-left: 40%;
+        margin-right: 40%;
+      }
+      .static {
+        margin-top: 10px;
+        width: 100px;
+        height: 20px;
+      }
+
+      .nav-item {
+        width: 20%;
+        height: 100px;
+        font-size: x-small;
+      }
+       #navigation {
+        clear: both;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: 0;
+      }
+        
+    }
+
+    @media (max-width: 320px) {
+      h1, hr{
+        display: none;
+      }
+      #wrap {
+        display: block;
+      }
+      p {
+        margin-bottom: 8px;
+      }
+
+     .cause {
+        width:164px; 
+        height:268px; 
+        overflow:hidden;
+        border:0.1mm solid;
+      }
+
+      #fc {
+        position:relative; 
+        top:-1033px; 
+        left:-420px;
+        width: 1000px;
+        height: 1300px;
+      }
+
+      .number {
+        width:280px;
+        height:300px; 
+        overflow:hidden;
+      }
+     
+      #fe {
+        position:relative;
+        top:-690px; 
+        left:-410px;
+        width: 2000px; 
+        height: 990px;
+      }
+
+      .cause_w {
+        margin-left: 24%;
+        margin-right: 24%;
+        
+      }
+      .number_w {
+        margin-left: 6%;
+        margin-right: 6%;
+      }
+      .static_w {
+        margin-left: 35%;
+        margin-right: 35%;
+      }
+
+      .nav-item {
+          width: 20%;
+          height: 50px;
+          font-size: 2pt;
+        }
+        #myLocation {
+          float: right;
+        }
+        #navigation {
+          float: none;
+          clear: both;
+          width: 320px; 
+          position: relative;
+          bottom: 0;        
+        }
+      }
+
+  </style>
+
+</head>
+ 
+<body>
+  <h1 align="center">통계자료</h1>
+  <hr>
+  <div id="wrap">
+    
+    <div class="cause_w">
+      <p>[화재원인]</p>
+      <div class="cause">
+        <iframe id="fc"
+          src="https://nfds.go.kr/dashboard/quicklook.do" scrolling="no">
+        </iframe>
+      </div>
+    </div>
+      
+    <div class="number_w">
+      <p>[지역별 화재빈도]</p>
+      <div class="number">
+        <iframe id="fe"
+          src="https://nfds.go.kr/dashboard/status.do" scrolling="no"> </iframe>
+      </div>
+    </div>
+    <div class="static_w">
+      <div class="static">
+        <a href="https://nfds.go.kr/stat/general.do" class="static_a">화재통계자료</a>
+      </div>
+    </div>
+    
+  </div>
+    
+    
+    <div align="center" id="navigation">
+      <ul class="nav nav-pills">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" onclick="location.href='{% url 'home' %}';">
+            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="pills-home" aria-selected="true">메인화면</a>
+          </li>
+          <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="pills-profile" aria-selected="false">소방안전</a>
+          </li>
+          <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
+            <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="pills-contact" aria-selected="false">통계자료</a>
+          </li>
+          <li class="nav-item" onclick="location.href='{% url 'location' %}';">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="pills-contact" aria-selected="false">위치기반 안내</a>
+          </li>
+          <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+              aria-controls="pills-contact" aria-selected="false">설정</a>
+          </li>
+        </ul>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+    
+</body>
+</html>

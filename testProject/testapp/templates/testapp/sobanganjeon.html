@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소방안전</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f3e5f5;
+    }
+    #navigation {
+      background: #492d80;
+    }
+  
+    #pills-tab {
+      width: 100%;
+      margin-bottom: 0px;
+    }
+
+    .nav-item {
+      width: 20%;
+      font-size: x-small;
+    }
+
+    .left {
+      float: left;
+      height: 100%;
+      width: 50%;
+    }
+
+    .right {
+      float: right;
+      height: 100%;
+      width: 50%;
+    }
+
+    .content {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    /* 화면 너비 0 ~ 1200px */
+    @media (min-width: 1220px) {
+       #navigation {
+      clear: both;
+      width: 100%;
+      height: 50px;
+      margin-top: 50px;
+      position:absolute;
+      bottom:0;
+    } 
+
+    .nav-item {
+        font-size: x-large;
+      }
+
+      .content {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    }
+
+    /* 화면 너비 0 ~ 768px */
+    @media all and (max-width: 415px) and (min-width: 330px) {
+      .left {
+        float: none;
+        width: 100%;
+      }
+      .right {
+        float: none;
+        width: 100%;
+      }
+      .nav-item {
+          width: 20%;
+          height: 100px;
+        }
+        #navigation {
+        clear: both;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: 0;
+        background: #492d80;
+      }
+
+    }
+
+
+    /* 화면 너비 0 ~ 320px */
+    @media (max-width: 320px) {
+      .left {
+        float: none;
+        width: 100%;
+      }
+
+      .right {
+        float: none;
+        width: 100%;
+      }
+
+      .nav-item {
+        width: 20%;
+        height: 50px;
+        font-size: x-small;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="fireextinguisher" class="left">
+      <h2>소화기 사용법</h2>
+      <img class="content" src="/static/img/2.jpg">
+    </div>
+    <div id="sohwajeon" class="right">
+      <h2>소화전 사용법</h2>
+      <img class="content" src="/static/img/3.jpg">
+    </div>
+    <div id="simpe" class="right">
+      <h2>심폐소생술</h2>
+      <img class="content" src="/static/img/1.jpg">
+    </div>
+  </div>
+
+  <div align="center" id="navigation">
+    <ul class="nav nav-pills">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" onclick="location.href='{% url 'home' %}';">
+          <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-home" aria-selected="true">메인화면</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
+          <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-profile" aria-selected="false">소방안전</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">통계자료</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'location' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">위치기반 안내</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">설정</a>
+        </li>
+      </ul>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>
