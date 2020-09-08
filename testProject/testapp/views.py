@@ -1,9 +1,11 @@
 from django.shortcuts import render
-
+from .models import Sensor
+from django.utils import timezone
 # Create your views here.
 
 def home(request):
-    return render(request, 'testapp/메인화면.html', {})
+    sensors = Sensor.objects.all().order_by('-date')[:5]
+    return render(request, 'testapp/메인화면.html', {'sensors': sensors})
 
 def safety(request):
     return render(request, 'testapp/sobanganjeon.html', {})

@@ -25,7 +25,7 @@ SECRET_KEY = 'uidhlk681g8b&)-&i^)%v_2wko13@dtiby#-+n-0&d5qdfibpt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['10.40.7.100', '.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['10.40.7.100', '.pythonanywhere.com', '127.0.0.1', '165.229.89.54']
 
 
 # Application definition
@@ -79,15 +79,15 @@ WSGI_APPLICATION = 'testProject.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
+        #  'ENGINE': 'django.db.backends.sqlite3',
+        #  'NAME': BASE_DIR / 'db.sqlite3',
 
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'mariadb',  #mysql
-        # 'USER': 'root', #root
-        # 'PASSWORD': '1234', #1234
-        # 'HOST': '10.40.7.100', #공백으로 냅두면 default localhost
-        # 'PORT': '3306' #공백으로 냅두면 default 3306
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sensor',  #mysql
+        'USER': 'root', #root
+        'PASSWORD': '21511785', #1234
+        'HOST': '165.229.89.54', #공백으로 냅두면 default localhost
+        'PORT': '3306' #공백으로 냅두면 default 3306
     }
 }
 
@@ -163,10 +163,10 @@ CORS_ALLOW_HEADERS = (
 ##https
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 # SECURE_HSTS_SECONDS
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-# SESSION_COOKIE_SECURE = False
-# CSRF_COOKIE_SECURE = False
-# SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
