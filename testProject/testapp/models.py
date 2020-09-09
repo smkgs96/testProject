@@ -118,6 +118,16 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class Probability(models.Model):
+    prob_id = models.IntegerField(primary_key=True)
+    percent = models.FloatField()
+    date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'probability'
+
+
 class Sensor(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     gas = models.FloatField(db_column='GAS')  # Field name made lowercase.
@@ -128,4 +138,14 @@ class Sensor(models.Model):
     class Meta:
         managed = False
         db_table = 'sensor'
-        ordering = ['-date']
+
+
+class State(models.Model):
+    state_num = models.IntegerField(primary_key=True)
+    gas_state = models.CharField(max_length=50)
+    temp_state = models.CharField(max_length=50)
+    flame_state = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'state'

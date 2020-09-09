@@ -244,28 +244,6 @@
     <p></p>
     <div id="section" style="margin-top: 50px;">
       <div id="senData" align="center">[센서데이터값]
-        <!--
-
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><B>날짜</B></td>
-            <td><B>센서</B></td>
-            <td><B>값</B></td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for candidate in candidates %}
-        <tr>
-            <td
-            >{{candidate.date}}</td>
-            <td>{{candidate.senName}}</td>
-            <td>{{candidate.data}}</td>
-        </tr>
-        {% endfor %}
-        <tbody>
-    </table>
-            -->
         <table class="table">
           <thead>
             <tr>
@@ -280,7 +258,7 @@
             {% for sensor in sensors %}
             <tr>
               <td>{{sensor.id}}</td>
-              <td>{{sensor.date}}</td>
+              <td>{{sensor.date.time}}</td>
               <td>{{sensor.gas}}</td>
               <td>{{sensor.temp}}</td>
               <td>{{sensor.flame}}</td>
@@ -356,54 +334,24 @@
         </table>
       </div>
       <div id="senState" align="center">[센서상태]
-        <!--
-
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><B>날짜</B></td>
-            <td><B>센서</B></td>
-            <td><B>상태값</B></td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for candidate in candidates %}
-        <tr>
-            <td>{{candidate.date}}</td>
-            <td>{{candidate.senName}}</td>
-            <td>{{candidate.senState}}</td>
-        </tr>
-        {% endfor %}
-        <tbody>
-    </table>
-            -->
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">센서</th>
-              <th scope="col">상태</th>
+              <th scope="col">가스센서</th>
+              <th scope="col">온도센서</th>
+              <th scope="col">불꽃센서</th>
             </tr>
           </thead>
           <tbody>
+            {% for state in states %}
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{{state.state_num}}</td>
+              <td>{{state.gas_state}}</td>
+              <td>{{state.temp_state}}</td>
+              <td>{{state.flame_state}}</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
