@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    return render(request, 'testapp/메인화면.html', {})
+    return render(request, 'testapp/main.html', {})
 
 def safety(request):
     return render(request, 'testapp/sobanganjeon.html', {})

@@ -8,7 +8,7 @@
     <title>메인화면</title>
     <script type="text/javascript">
       window.onload = function create_request() {
-          var API_URL = "http://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+          var API_URL = "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
           $.get(API_URL, deliver);
       }
 
@@ -67,11 +67,11 @@
       }
       .temperature {
         float: left;
-        }
-        #myLocation {
+      }
+      #myLocation {
         display: inline-block;
         margin-left: 135px;
-        }
+      }
      
       /* 화면 너비 0 ~ 1200px */
       @media (min-width: 1280px) {
