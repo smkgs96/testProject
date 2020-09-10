@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <title>setting</title>
+
+    <script type="text/javascript">
+      window.onload = function create_request() {
+          var API_URL = "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+          $.get(API_URL, deliver);
+      }
+
+      function deliver(response) {
+          var result = 
+              "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
+              "<li> 습도: " + response.main.humidity + "% </li>" +
+              "<li> 바람세기: " + response.wind.speed + " mph</li>" ;
+          $(".temperature").html(result);
+      }
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -25,7 +42,7 @@
         height: 150px;
         background: #9575cd;
       }
-      temperature {
+      .temperature {
         position: relative;
         float: left;
         top: 10px;
@@ -105,10 +122,7 @@
 <body>
   <div id="wrap">
     <div id="header">
-      <temperature
-        >현재 날씨: ℃<br />
-        배터리: %
-      </temperature>
+      <div class="temperature"></div>
       <div id="myLocation">
         <button
           onclick="window.open('{% url 'popup' %}','popup','width=430, height=500, location=no, status=no, scrollbars=yes');"
@@ -191,9 +205,9 @@
           </ul>
       </div>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
