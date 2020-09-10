@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="ko">
+<<<<<<< HEAD:testProject/testapp/templates/testapp/main.html
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -76,45 +77,129 @@
       /* 화면 너비 0 ~ 1200px */
       @media (min-width: 1280px) {
         * {
+=======
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메인화면</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      background: #f3e5f5;
+      overflow-x: "hidden";
+    }
+
+    #senData {
+      background: #7e57c2;
+    }
+
+    #predictFire {
+      background: #9a78d3;
+    }
+
+    #analysisFire {
+      background: #8875a5;
+    }
+
+    #senState {
+      background: #a381dd;
+    }
+
+    #pills-tab {
+      width: 100%;
+    }
+
+    .table {
+      table-layout: fixed;
+    }
+
+    td {
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 10px;
+    }
+
+    th {
+      font-size: 10px;
+    }
+
+    .nav-item {
+      width: 20%;
+      background: #492d80;
+      font-size: x-small;
+    }
+
+    #temperature {
+      float: left;
+    }
+
+    #myLocation {
+      display: inline-block;
+      margin-left: 135px;
+    }
+
+    /* 화면 너비 0 ~ 1200px */
+    @media (min-width: 1280px) {
+      * {
+>>>>>>> dbtest:testProject/testapp/templates/testapp/메인화면.html
         margin: 0;
         padding: 0;
       }
+
       #wrap {
         width: 1200px;
         margin: 0 auto;
       }
+
       header {
         width: 100%;
         height: 150px;
         background: #9575cd;
       }
+<<<<<<< HEAD:testProject/testapp/templates/testapp/main.html
       .temperature {
+=======
+
+      #temperature {
+>>>>>>> dbtest:testProject/testapp/templates/testapp/메인화면.html
         position: relative;
         float: left;
       }
+
       #myLocation {
         float: right;
       }
+
       #section {
         float: left;
       }
+
       #senData {
         float: left;
         width: 25%;
         height: 300px;
 
       }
+
       #predictFire {
         float: left;
         width: 25%;
         height: 300px;
-        
+
       }
+
       #analysisFire {
         float: left;
         width: 25%;
         height: 300px;
       }
+
       #senState {
         float: left;
         width: 25%;
@@ -130,30 +215,37 @@
         position: absolute;
         bottom: 0;
       }
+
       .nav-item {
         background: #492d80;
         font-size: x-large;
       }
+    }
+
+    /* 화면 너비 330 ~ 415px */
+    @media screen and (max-width: 415px) and (min-width: 330) {
+      #senData {
+        font: none;
       }
-      /* 화면 너비 330 ~ 415px */
-      @media screen and (max-width: 415px) and (min-width: 330){
-        #senData {
-          font: none;
-        }
-        #predictFire {
-          font: none;
-        }
-        #analysisFire {
-          font: none;
-        }
-        #senState {
-          font: none;
-        }
-        .nav-item {
-          width: 20%;
-          height: 100px;
-        }
-        #navigation {
+
+      #predictFire {
+        font: none;
+      }
+
+      #analysisFire {
+        font: none;
+      }
+
+      #senState {
+        font: none;
+      }
+
+      .nav-item {
+        width: 20%;
+        height: 100px;
+      }
+
+      #navigation {
         clear: both;
         width: 100%;
         height: 50px;
@@ -162,12 +254,15 @@
         bottom: 0;
       }
 
-      }
-      /* 화면 너비 0 ~ 320px */
-      @media (max-width: 320px) {
-        /* #wrap {
+    }
+
+    /* 화면 너비 0 ~ 320px */
+    @media (max-width: 320px) {
+
+      /* #wrap {
           width: 95%;
         } */
+<<<<<<< HEAD:testProject/testapp/templates/testapp/main.html
         #senData {
           float: none;
         }
@@ -225,33 +320,97 @@
             119신고
           </button>
         </div>
-      </div>
-     <p></p>
-      <div id="section" style="margin-top: 50px;">
-        <div id="senData" align="center"
-        >[센서데이터값]
-        <!--
+=======
+      #senData {
+        float: none;
+      }
 
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><B>날짜</B></td>
-            <td><B>센서</B></td>
-            <td><B>값</B></td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for candidate in candidates %}
-        <tr>
-            <td
-            >{{candidate.date}}</td>
-            <td>{{candidate.senName}}</td>
-            <td>{{candidate.data}}</td>
-        </tr>
-        {% endfor %}
-        <tbody>
-    </table>
-            -->
+      #predictFire {
+        float: none;
+      }
+
+      #analysisFire {
+        float: none;
+      }
+
+      #senState {
+        float: none;
+      }
+
+      #temperature {
+        float: left;
+      }
+
+      #myLocation {
+        display: inline-block;
+        margin-left: 40px;
+
+      }
+
+      #navigation {
+        float: none;
+        clear: both;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+      }
+
+      .nav-item {
+        width: 20%;
+        height: 50px;
+        font-size: 2pt;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="header">
+      <div id="temperature">현재 날씨: ℃<br />
+        배터리: %
+>>>>>>> dbtest:testProject/testapp/templates/testapp/메인화면.html
+      </div>
+      <div id="myLocation">
+        <button
+          onclick="window.open('{% url 'popup' %}','popup','width=430, height=500, location=no, status=no, scrollbars=yes');"
+          class="btn btn-secondary">
+          위치정보 <br>제공동의
+        </button>
+        <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
+          119신고
+        </button>
+      </div>
+    </div>
+    <p></p>
+    <div id="section" style="margin-top: 50px;">
+      <div id="senData" align="center">[센서데이터값]
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">날짜</th>
+              <th scope="col">가스센서</th>
+              <th scope="col">온도센서</th>
+              <th scope="col">불꽃센서</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sensor in sensors %}
+            <tr>
+              <td>{{sensor.id}}</td>
+              <td>{{sensor.date.time}}</td>
+              <td>{{sensor.gas}}</td>
+              <td>{{sensor.temp}}</td>
+              <td>{{sensor.flame}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div id="predictFire" align="center">[화재발생률]
         <table class="table">
           <thead>
             <tr>
@@ -284,8 +443,7 @@
         </table>
       </div>
 
-      <div id="predictFire" align="center"
-        >[화재발생률]
+      <div id="analysisFire" align="center">[화재분석]
         <table class="table">
           <thead>
             <tr>
@@ -317,165 +475,73 @@
           </tbody>
         </table>
       </div>
-
-      <div id="analysisFire" align="center"
-        >[화재분석]
+      <div id="senState" align="center">[센서상태]
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">날짜</th>
-              <th scope="col">센서</th>
-              <th scope="col">값</th>
+              <th scope="col">가스센서</th>
+              <th scope="col">온도센서</th>
+              <th scope="col">불꽃센서</th>
             </tr>
           </thead>
           <tbody>
+            {% for state in states %}
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{{state.state_num}}</td>
+              <td>{{state.gas_state}}</td>
+              <td>{{state.temp_state}}</td>
+              <td>{{state.flame_state}}</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
-      <div id="senState" align="center"
-        >[센서상태]
-        <!--
-
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><B>날짜</B></td>
-            <td><B>센서</B></td>
-            <td><B>상태값</B></td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for candidate in candidates %}
-        <tr>
-            <td>{{candidate.date}}</td>
-            <td>{{candidate.senName}}</td>
-            <td>{{candidate.senState}}</td>
-        </tr>
-        {% endfor %}
-        <tbody>
-    </table>
-            -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">날짜</th>
-              <th scope="col">센서</th>
-              <th scope="col">상태값</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>  
-      </div>
-      
     </div>
 
-    <div align="center" id="navigation">
-      <ul class="nav nav-pills">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item" onclick="location.href='{% url 'home' %}';">
-            <a
-              class="nav-link active"
-              id="pills-home-tab"
-              data-toggle="pill"
-              href="#"
-              role="tab"
-              aria-controls="pills-home"
-              aria-selected="true"
-              >메인화면</a
-            >
-          </li>
-          <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
-            <a
-              class="nav-link"
-              id="pills-profile-tab"
-              data-toggle="pill"
-              href="#"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              >소방안전</a
-            >
-          </li>
-          <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
-            <a
-              class="nav-link"
-              id="pills-contact-tab"
-              data-toggle="pill"
-              href="#"
-              role="tab"
-              aria-controls="pills-contact"
-              aria-selected="false"
-              >통계자료</a
-            >
-          </li>
-          <li class="nav-item" onclick="location.href='{% url 'location' %}';">
-            <a
-              class="nav-link"
-              id="pills-contact-tab"
-              data-toggle="pill"
-              href="#"
-              role="tab"
-              aria-controls="pills-contact"
-              aria-selected="false"
-              >위치기반 안내</a
-            >
-          </li>
-          <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
-            <a
-              class="nav-link"
-              id="pills-contact-tab"
-              data-toggle="pill"
-              href="#"
-              role="tab"
-              aria-controls="pills-contact"
-              aria-selected="false"
-              >설정</a
-            >
-          </li>
-        </ul>
+  </div>
+
+  <div align="center" id="navigation">
+    <ul class="nav nav-pills">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" onclick="location.href='{% url 'home' %}';">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-home" aria-selected="true">메인화면</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-profile" aria-selected="false">소방안전</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">통계자료</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'location' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">위치기반 안내</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">설정</a>
+        </li>
       </ul>
-    </div>
+    </ul>
+  </div>
 
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+</body>
+
+<<<<<<< HEAD:testProject/testapp/templates/testapp/main.html
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script
@@ -495,3 +561,6 @@
     ></script>
   </body>
 </html>
+=======
+</html>
+>>>>>>> dbtest:testProject/testapp/templates/testapp/메인화면.html
