@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'uidhlk681g8b&)-&i^)%v_2wko13@dtiby#-+n-0&d5qdfibpt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['10.40.7.100', '.pythonanywhere.com', '127.0.0.1', '165.229.89.54']
 
@@ -83,10 +83,10 @@ DATABASES = {
         #  'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sensor',  #mysql
-        'USER': 'root', #root
-        'PASSWORD': '21511785', #1234
-        'HOST': '165.229.89.54', #공백으로 냅두면 default localhost
+        'NAME': 'jiggy0429$default',  #mysql
+        'USER': 'jiggy0429', #root
+        'PASSWORD': 'python21511785', #1234
+        'HOST': 'jiggy0429.mysql.pythonanywhere-services.com', #공백으로 냅두면 default localhost
         'PORT': '3306' #공백으로 냅두면 default 3306
     }
 }
