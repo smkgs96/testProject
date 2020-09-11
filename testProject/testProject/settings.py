@@ -79,14 +79,11 @@ WSGI_APPLICATION = 'testProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        #  'ENGINE': 'django.db.backends.sqlite3',
-        #  'NAME': BASE_DIR / 'db.sqlite3',
-
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jiggy0429$default',  #mysql
-        'USER': 'jiggy0429', #root
-        'PASSWORD': 'python21511785', #1234
-        'HOST': 'jiggy0429.mysql.pythonanywhere-services.com', #공백으로 냅두면 default localhost
+        'NAME': 'sensor',  #mysql
+        'USER': 'root', #root
+        'PASSWORD': '21511785', #1234
+        'HOST': '165.229.89.54', #공백으로 냅두면 default localhost
         'PORT': '3306' #공백으로 냅두면 default 3306
     }
 }

@@ -177,7 +177,7 @@
 </head>
 
 <body style="text-align:center; ">
-
+    <input type="hidden" id="varloc" name="varloc" value="{{location}}">
     <h1 align="center">위치 기반 안내</h1>
     <hr>
 
@@ -208,7 +208,9 @@
         kakao.maps.disableHD();
         //////////////////////////////////////카테고리
         // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-        var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
+        var placeOverlay = new kakao.maps.CustomOverlay({
+                zIndex: 1
+            }),
             contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
             markers = [], // 마커를 담을 배열입니다
             currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
@@ -221,49 +223,40 @@
 
         // 지도를 생성합니다    
         var map = new kakao.maps.Map(mapContainer, mapOption);
-        if (navigator.geolocation) {
+        var varloc = document.getElementById("varloc").value;
+        var obj = JSON.parse(varloc);
+        var lat = obj.location.lat;
+        var lng = obj.location.lng;
+        var locPosition = new kakao.maps.LatLng(lat, lng),
+            message = '<div style="padding:5px;">현재위치</div>';
+        displayMarker(locPosition, message);
 
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(function (position) {
+        function displayMarker(locPosition, message) {
 
-                var lat = position.coords.latitude, // 위도
-                    lon = position.coords.longitude; // 경도
-
-                var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                    message = '<div style="padding:5px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
-
-                // 마커와 인포윈도우를 표시합니다
-                displayMarker(locPosition, message);
-
+            // 마커를 생성합니다
+            var marker_present = new kakao.maps.Marker({
+                map: map,
+                position: locPosition
             });
 
-            function displayMarker(locPosition, message) {
+            var iwContent = message, // 인포윈도우에 표시할 내용
+                iwRemoveable = true;
 
-                // 마커를 생성합니다
-                var marker_present = new kakao.maps.Marker({
-                    map: map,
-                    position: locPosition
-                });
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemoveable
+            });
 
-                var iwContent = message, // 인포윈도우에 표시할 내용
-                    iwRemoveable = true;
+            // 인포윈도우를 마커위에 표시합니다 
+            infowindow.open(map, marker_present);
 
-                // 인포윈도우를 생성합니다
-                var infowindow = new kakao.maps.InfoWindow({
-                    content: iwContent,
-                    removable: iwRemoveable
-                });
-
-                // 인포윈도우를 마커위에 표시합니다 
-                infowindow.open(map, marker_present);
-
-                // 지도 중심좌표를 접속위치로 변경합니다
-                map.setCenter(locPosition);
-            }
-
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);
         }
-        var positions = [
-            {
+
+
+        var positions = [{
                 "name": "수서119안전센터",
                 "addr": "서울특별시 강남구 광평로31길 6 (수서동)",
                 "lat": 37.4849268509466,
@@ -7710,9 +7703,12 @@
         ];
 
 
-        var imageSrc = 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F5Xgu5%2FbtqGHrw0nld%2FT1j9FTRJmzIuKKKCF8115k%2Fimg.png', // 마커이미지의 주소입니다    
+        var imageSrc =
+            'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F5Xgu5%2FbtqGHrw0nld%2FT1j9FTRJmzIuKKKCF8115k%2Fimg.png', // 마커이미지의 주소입니다    
             imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
-            imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            imageOption = {
+                offset: new kakao.maps.Point(27, 69)
+            }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
@@ -7776,7 +7772,9 @@
             // 지도에 표시되고 있는 마커를 제거합니다
             removeMarker();
 
-            ps.categorySearch(currCategory, placesSearchCB, { useMapBounds: true });
+            ps.categorySearch(currCategory, placesSearchCB, {
+                useMapBounds: true
+            });
         }
 
         // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -7820,8 +7818,9 @@
 
         // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
         function addMarker(position, order) {
-            var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-                imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
+            var imageSrc =
+                'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+                imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
                 imgOptions = {
                     spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
                     spriteOrigin: new kakao.maps.Point(46, (order * 36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
@@ -7834,7 +7833,7 @@
                 });
 
             marker.setMap(map); // 지도 위에 마커를 표출합니다
-            markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+            markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
             return marker;
         }
@@ -7849,7 +7848,8 @@
         // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
         function displayPlaceInfo(place) {
             var content = '<div class="placeinfo">' +
-                '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';
+                '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' +
+                place.place_name + '</a>';
 
             if (place.road_address_name) {
                 content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
@@ -7911,7 +7911,7 @@
             }
         }
         var fire_mark = [];
-        
+
         function onoff() {
             currentvalue = document.getElementById('onoff').value;
             console.log(1);
@@ -7919,7 +7919,7 @@
                 document.getElementById("onoff").value = "Off";
                 for (var i = 0; i < positions.length; i++) {
                     // 마커를 생성합니다
-                    
+
                     var marker = new kakao.maps.Marker({
                         map: map, // 마커를 표시할 지도
                         position: new kakao.maps.LatLng(positions[i].lat, positions[i].lng), // 마커의 위치
@@ -7929,19 +7929,18 @@
                     // 마커에 표시할 인포윈도우를 생성합니다 
                     var infowindow = new kakao.maps.InfoWindow({
                         title: positions[i].name,
-                        content: '<style="text-align:center">' + positions[i].name + '<br>' + positions[i].addr + '<br>' + positions[i].tel + '</style>' // 인포윈도우에 표시할 내용
+                        content: '<style="text-align:center">' + positions[i].name + '<br>' + positions[i]
+                            .addr + '<br>' + positions[i].tel + '</style>' // 인포윈도우에 표시할 내용
                     });
-                   
+
                     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
                     // 이벤트 리스너로는 클로저를 만들어 등록합니다 
                     // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
                     kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
                     kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
                 }
-                   
-            }
-           
-            else {
+
+            } else {
                 document.getElementById("onoff").value = "소방서";
                 console.log(0);
                 for (var i = 0; i < fire_mark.length; i++) {

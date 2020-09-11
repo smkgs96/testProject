@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Sensor, State, Probability
 from django.utils import timezone
+import requests
 # Create your views here.
 
 def home(request):
@@ -17,7 +18,13 @@ def statics(request):
     return render(request, 'testapp/post_list.html', {})
 
 def location(request):
-    return render(request, 'testapp/location.html', {})
+    r = requests.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBGE4LjBk3a2Lsqi1CzGHAYInoWWZTOsSo', params=request.POST)
+    
+    if r.status_code == 200:
+        context = {'location': r.text}
+        return render(request, 'testapp/location.html', context=context)
+    else:
+        return render(request, 'testapp/location.html', {'location' : 'fail'})
 
 def setting(request):
     return render(request, 'testapp/setting.html', {})
