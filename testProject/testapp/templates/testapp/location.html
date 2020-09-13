@@ -223,38 +223,45 @@
 
         // 지도를 생성합니다    
         var map = new kakao.maps.Map(mapContainer, mapOption);
-        var varloc = document.getElementById("varloc").value;
-        var obj = JSON.parse(varloc);
-        var lat = obj.location.lat;
-        var lng = obj.location.lng;
-        var locPosition = new kakao.maps.LatLng(lat, lng),
-            message = '<div style="padding:5px;">현재위치</div>';
-        displayMarker(locPosition, message);
 
-        function displayMarker(locPosition, message) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) { //여기서 부터 안됨
+                //chrome://flags/#unsafely-treat-insecure-origin-as-secure 들어가서 웹서버 주소 입력하고 enabled 하고 reluanch 하면 위치는 받아옴. 마커가 안됨, 폰도 안됨
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
 
-            // 마커를 생성합니다
-            var marker_present = new kakao.maps.Marker({
-                map: map,
-                position: locPosition
-            });
+                var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                    message = '<div style="padding:5px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
 
-            var iwContent = message, // 인포윈도우에 표시할 내용
-                iwRemoveable = true;
+                // 마커와 인포윈도우를 표시합니다
+                displayMarker(locPosition, message);
 
-            // 인포윈도우를 생성합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content: iwContent,
-                removable: iwRemoveable
-            });
+                function displayMarker(locPosition, message) {
 
-            // 인포윈도우를 마커위에 표시합니다 
-            infowindow.open(map, marker_present);
+                    // 마커를 생성합니다
+                    var marker_present = new kakao.maps.Marker({
+                        map: map,
+                        position: locPosition
+                    });
 
-            // 지도 중심좌표를 접속위치로 변경합니다
-            map.setCenter(locPosition);
+                    var iwContent = message, // 인포윈도우에 표시할 내용
+                        iwRemoveable = true;
+
+                    // 인포윈도우를 생성합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content: iwContent,
+                        removable: iwRemoveable
+                    });
+
+                    // 인포윈도우를 마커위에 표시합니다 
+                    infowindow.open(map, marker_present);
+
+                    // 지도 중심좌표를 접속위치로 변경합니다
+                    map.setCenter(locPosition);
+                }
+
+            })
         }
-
 
         var positions = [{
                 "name": "수서119안전센터",
@@ -7848,12 +7855,15 @@
         // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
         function displayPlaceInfo(place) {
             var content = '<div class="placeinfo">' +
-                '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' +
+                '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name +
+                '">' +
                 place.place_name + '</a>';
 
             if (place.road_address_name) {
-                content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
-                    '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+                content += '    <span title="' + place.road_address_name + '">' + place.road_address_name +
+                    '</span>' +
+                    '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name +
+                    ')</span>';
             } else {
                 content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
             }

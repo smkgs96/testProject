@@ -1,124 +1,164 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <title>setting</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <title>setting</title>
 
-    <script type="text/javascript">
-      window.onload = function create_request() {
-          var API_URL = "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
-          $.get(API_URL, deliver);
-      }
+  <script type="text/javascript">
+    window.onload = function create_request() {
+      var API_URL =
+        "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+      $.get(API_URL, deliver);
+    }
 
-      function deliver(response) {
-          var result = 
-              "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
-              "<li> 습도: " + response.main.humidity + "% </li>" +
-              "<li> 바람세기: " + response.wind.speed + " mph</li>" ;
-          $(".temperature").html(result);
-      }
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    function deliver(response) {
+      var result =
+        "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
+        "<li> 습도: " + response.main.humidity + "% </li>" +
+        "<li> 바람세기: " + response.wind.speed + " mph</li>";
+      $(".temperature").html(result);
+    }
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <style>
-      body {
-        background: #f3e5f5;
-      }
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-      #navigation {clear: both; width: 100%; height: 50px; background: #492d80; 
-          /* margin-top: 50px; */
-          position:absolute;
-          bottom:0;
-          width:100%;  
-      }
-      header {
-        width: 100%;
-        height: 150px;
-        background: #9575cd;
-      }
-      .temperature {
-        position: relative;
-        float: left;
-        top: 10px;
-      }
-      #myLocation {
-        /*position: relative;*/
-        float: right;
-      }
-      #pills-tab {width: 100%;}
-      .nav-item {width: 20%; font-size: x-large;}
-      #box1 {float: left; margin-left: 200px;}
-      #box2 {float: right;margin-right: 200px;}
-      #send {position:absolute;top:50%;left:50%;margin:-50px 0 0 -50px;}
+  <style>
+    body {
+      background: #f3e5f5;
+    }
 
-      @media (min-width: 1280px){
-        #wrap {
+    #navigation {
+      clear: both;
+      width: 100%;
+      height: 50px;
+      background: #492d80;
+      /* margin-top: 50px; */
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    header {
+      width: 100%;
+      height: 150px;
+      background: #9575cd;
+    }
+
+    .temperature {
+      position: relative;
+      float: left;
+      top: 10px;
+    }
+
+    #myLocation {
+      /*position: relative;*/
+      float: right;
+    }
+
+    #pills-tab {
+      width: 100%;
+    }
+
+    .nav-item {
+      width: 20%;
+      font-size: x-large;
+    }
+
+    #box1 {
+      float: left;
+      margin-left: 200px;
+    }
+
+    #box2 {
+      float: right;
+      margin-right: 200px;
+    }
+
+    #send {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -50px 0 0 -50px;
+    }
+
+    @media (min-width: 1280px) {
+      #wrap {
         width: 1200px;
         margin: 0 auto;
       }
+    }
+
+    @media screen and (max-width: 415px) and (min-width: 330px) {
+      .nav-item {
+        width: 20%;
+        height: 100px;
+        font-size: x-small;
       }
 
-      @media screen and (max-width: 415px) and (min-width: 330px) {
-        .nav-item {
-          width: 20%;
-          height: 100px;
-          font-size: x-small;
-        }
-        #navigation {
+      #navigation {
         clear: both;
         width: 100%;
         height: 50px;
         /* margin-top: 50px; */
         position: absolute;
         bottom: 0;
-        }
-        #box1{
-          position: relative;
-          margin-left: 0px;
-        }
-        #box2{
-          position: relative;
-          margin-right: 0px;
-        }
       }
 
-      @media (max-width: 320px) {
-        #wrap {
+      #box1 {
+        position: relative;
+        margin-left: 0px;
+      }
+
+      #box2 {
+        position: relative;
+        margin-right: 0px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      #wrap {
         width: 95%;
         margin: 0 auto;
       }
-        .nav-item {
-            width: 20%;
-            height: 50px;
-            font-size: 2pt;
-          }
-        #myLocation {
-            float: right;
-          }
-        #navigation {
-            float: none;
-            clear: both;
-            width: 320px; 
-            position: fixed;
-            bottom: 0;        
-          }
-          #box1{
-            position: relative;
-            margin-left: 0px;
-          }
-          #box2{
-            position: relative;
-            margin-right: 0px;
-          }
+
+      .nav-item {
+        width: 20%;
+        height: 50px;
+        font-size: 2pt;
       }
-    </style>
+
+      #myLocation {
+        float: right;
+      }
+
+      #navigation {
+        float: none;
+        clear: both;
+        width: 320px;
+        position: fixed;
+        bottom: 0;
+      }
+
+      #box1 {
+        position: relative;
+        margin-left: 0px;
+      }
+
+      #box2 {
+        position: relative;
+        margin-right: 0px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div id="wrap">
     <div id="header">
@@ -126,93 +166,89 @@
       <div id="myLocation">
         <button
           onclick="window.open('{% url 'popup' %}','popup','width=430, height=500, location=no, status=no, scrollbars=yes');"
-          class="btn btn-secondary"
-        >
+          class="btn btn-secondary">
           위치정보 <br>제공동의
         </button>
-        <button
-          onclick="document.location.href='tel:119'"
-          type="button"
-          class="btn btn-secondary"
-        >
+        <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
           119신고
         </button>
       </div>
     </div>
-      <p style="margin-top: 20px;"><br><br><br><br></p>
-     <p style="font-weight: bold; margin-bottom: 20px; text-align:left; float: left; background-color: #9575cd;">
-      온도민감도 설정  
-     </p>
-      <p style="font-weight: bold; margin-bottom: 20px; text-align:right;" >
-        <span style="background-color: #9575cd;">
-          가스민감도 설정
-        </span>
-      
-      </p>
-      <form>
-          <div id="box1">
-              <select name="sensetive_temp" id="temp" style="width:100px;font-size:22px;">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3" selected>3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-              </select>
-          </div>
-          
-          <div id="box2" >
-              <select name="sensetive_gas" id="gas" style="width:100px;font-size:22px;">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3" selected>3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-              </select>
-          </div>
-  
-          <div id="send">
-              <input type="submit" value="확인">
-              <input type="reset" value="초기화">
-          </div>
-  
-      </form>
-  </div>
-  
+    <p style="margin-top: 20px;"><br><br><br><br></p>
+    <p style="font-weight: bold; margin-bottom: 20px; text-align:left; float: left; background-color: #9575cd;">
+      온도민감도 설정
+    </p>
+    <p style="font-weight: bold; margin-bottom: 20px; text-align:right;">
+      <span style="background-color: #9575cd;">
+        가스민감도 설정
+      </span>
 
-    <div align="center" id="navigation">
-        <ul class="nav nav-pills">
-          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" onclick="location.href='{% url 'home' %}';">
-              <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#" role="tab"
-                aria-controls="pills-home" aria-selected="true">메인화면</a>
-            </li>
-            <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
-              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
-                aria-controls="pills-profile" aria-selected="false">소방안전</a>
-            </li>
-            <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
-              <a class="nav-link " id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
-                aria-controls="pills-contact" aria-selected="false">통계자료</a>
-            </li>
-            <li class="nav-item" onclick="location.href='{% url 'location' %}';">
-              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
-                aria-controls="pills-contact" aria-selected="false">위치기반 안내</a>
-            </li>
-            <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
-              <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
-                aria-controls="pills-contact" aria-selected="false">설정</a>
-            </li>
-          </ul>
+    </p>
+    <form>
+      <div id="box1">
+        <select name="sensetive_temp" id="temp" style="width:100px;font-size:22px;">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </div>
 
-      <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      <div id="box2">
+        <select name="sensetive_gas" id="gas" style="width:100px;font-size:22px;">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div id="send">
+        <input type="submit" value="확인">
+        <input type="reset" value="초기화">
+      </div>
+
+    </form>
+  </div>
+
+
+  <div align="center" id="navigation">
+    <ul class="nav nav-pills">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" onclick="location.href='{% url 'home' %}';">
+          <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home"
+            aria-selected="true">메인화면</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-profile" aria-selected="false">소방안전</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'statics' %}';">
+          <a class="nav-link " id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">통계자료</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'location' %}';">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">위치기반 안내</a>
+        </li>
+        <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
+          <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
+            aria-controls="pills-contact" aria-selected="false">설정</a>
+        </li>
+      </ul>
+  </div>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
 </body>
+
 </html>
