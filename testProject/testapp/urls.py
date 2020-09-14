@@ -6,7 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('', views.home, name='home'),
     path('safety/', views.safety, name='safety'),
-    path('statics/', views.statics, name='statics'),
+    path('statistics/', views.statistics, name='statistics'),
     path('location/', views.location, name='location'),
     path('setting/', views.setting, name='setting'),
     path('popup/', views.popup, name='popup'),

@@ -14,8 +14,8 @@ def home(request):
 def safety(request):
     return render(request, 'testapp/sobanganjeon.html', {})
 
-def statics(request):
-    return render(request, 'testapp/post_list.html', {})
+def statistics(request):
+    return render(request, 'testapp/statistics.html', {})
 
 def location(request):
     r = requests.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBGE4LjBk3a2Lsqi1CzGHAYInoWWZTOsSo', params=request.POST)
