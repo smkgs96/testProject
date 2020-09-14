@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-  <title>setting</title>
+  <title>설정</title>
 
   <script type="text/javascript">
     window.onload = function create_request() {
@@ -39,7 +39,6 @@
       width: 100%;
       height: 50px;
       background: #492d80;
-      /* margin-top: 50px; */
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -58,7 +57,6 @@
     }
 
     #myLocation {
-      /*position: relative;*/
       float: right;
     }
 
@@ -106,7 +104,6 @@
         clear: both;
         width: 100%;
         height: 50px;
-        /* margin-top: 50px; */
         position: absolute;
         bottom: 0;
       }
@@ -164,11 +161,11 @@
     <div id="header">
       <div class="temperature"></div>
       <div id="myLocation">
-        <button
+        <!-- <button
           onclick="window.open('{% url 'popup' %}','popup','width=430, height=500, location=no, status=no, scrollbars=yes');"
           class="btn btn-secondary">
           위치정보 <br>제공동의
-        </button>
+        </button> -->
         <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
           119신고
         </button>
