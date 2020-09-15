@@ -134,6 +134,7 @@ class Sensor(models.Model):
     temp = models.FloatField(db_column='TEMP')  # Field name made lowercase.
     flame = models.FloatField(db_column='FLAME')  # Field name made lowercase.
     date = models.DateTimeField(db_column='DATE')  # Field name made lowercase.
+    ifcam = models.JSONField(db_column='IFCAM', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

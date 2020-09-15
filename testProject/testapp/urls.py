@@ -10,4 +10,5 @@ urlpatterns = [
     path('location/', views.location, name='location'),
     path('setting/', views.setting, name='setting'),
     path('popup/', views.popup, name='popup'),
+    path('ifcam/', views.ifcam, name='ifcam'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

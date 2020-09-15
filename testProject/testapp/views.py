@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Sensor, State, Probability
 from django.utils import timezone
 import requests
+from .bicubicinterpolatearr import do_color
+
 # Create your views here.
 
 def home(request):
@@ -25,3 +27,9 @@ def setting(request):
 
 def popup(request):
     return render(request, 'testapp/popup.html', {})
+
+def ifcam(request):
+    ifcamlist = Sensor.objects.only('ifcam').order_by('-id')[0].ifcam
+    pixel64list = do_color(ifcamlist)
+    context = {'pixels':pixel64list}
+    return render(request, 'testapp/ifcam.html', context=context)
