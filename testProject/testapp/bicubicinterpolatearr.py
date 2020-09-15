@@ -27,8 +27,8 @@ def do_color(ifcamlist):
     pixels = data
     pixels = [map(p, MINTEMP, MAXTEMP, 0, COLORDEPTH - 1) for p in pixels]
     bicubic = griddata(points, pixels, (grid_x, grid_y), method='cubic')
-    for j,row in enumerate(bicubic):
-        for i,pixel in enumerate(row):
+    for row in bicubic:
+        for pixel in row:
             result_arr.append(colors[constrain(int(pixel), 0, COLORDEPTH- 1)])
     
     return result_arr
