@@ -3,6 +3,7 @@ from .models import Sensor, State, Probability
 from django.utils import timezone
 import requests
 from .bicubicinterpolatearr import do_color
+import json
 
 # Create your views here.
 
@@ -31,5 +32,5 @@ def popup(request):
 def ifcam(request):
     ifcamlist = Sensor.objects.only('ifcam').order_by('-id')[0].ifcam
     pixel64list = do_color(ifcamlist)
-    context = {'pixels':pixel64list}
+    context = {'pixels':json.dumps(pixel64list)}
     return render(request, 'testapp/ifcam.html', context=context)

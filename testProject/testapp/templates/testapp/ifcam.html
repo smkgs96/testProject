@@ -1,3 +1,27 @@
-{% for a in pixels %}
-{{a}}
-{% endfor %}
+<html>
+
+<head>
+    <title>열화상 카메라</title>
+
+</head>
+
+<body>
+    <h1 style="text-align:center;">열화상 카메라 값</h1>
+    <hr>
+    <div id="container" style="height: 640px;width: 640px;margin:auto "></div>
+    <script>
+        var c = JSON.parse("{{pixels}}");
+        var container = document.getElementById('container');
+        for (var i = 0; i < c.length; i++) {
+            container.innerHTML += '<div id=pixel' + i + '></div>';
+            pixel = document.getElementById('pixel' + i);
+            pixel.style.backgroundColor = 'rgb(' + c[i][0] + ',' + c[i][1] + ',' + c[i][2]
+            ')';
+            pixel.style.float = "left";
+            pixel.style.width = "20px";
+            pixel.style.height = "20px";
+        }
+    </script>
+</body>
+
+</html>
