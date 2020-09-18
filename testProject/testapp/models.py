@@ -121,11 +121,22 @@ class DjangoSession(models.Model):
 class Probability(models.Model):
     prob_id = models.IntegerField(primary_key=True)
     percent = models.FloatField()
+    step = models.IntegerField(blank=True, null=True)
     date = models.DateTimeField()
 
     class Meta:
         managed = False
         db_table = 'probability'
+
+
+class Sensitivity(models.Model):
+    sense_id = models.AutoField(primary_key=True)
+    sense_temp = models.IntegerField(blank=True, null=True)
+    sense_gas = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sensitivity'
 
 
 class Sensor(models.Model):

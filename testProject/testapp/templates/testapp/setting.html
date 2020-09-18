@@ -157,6 +157,8 @@
 </head>
 
 <body>
+  <input type="hidden" id="dgas" value="{{sense_gas}}">
+  <input type="hidden" id="dtemp" value="{{sense_temp}}">
   <div id="wrap">
     <div id="header">
       <div class="temperature"></div>
@@ -181,22 +183,23 @@
       </span>
 
     </p>
-    <form>
+    <form method="POST" action=''>
+      {% csrf_token %}
       <div id="box1">
-        <select name="sensetive_temp" id="temp" style="width:100px;font-size:22px;">
+        <select name="sense_temp" id="temp" style="width:100px;font-size:22px;">
           <option value="1">1</option>
           <option value="2">2</option>
-          <option value="3" selected>3</option>
+          <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
       </div>
 
       <div id="box2">
-        <select name="sensetive_gas" id="gas" style="width:100px;font-size:22px;">
+        <select name="sense_gas" id="gas" style="width:100px;font-size:22px;">
           <option value="1">1</option>
           <option value="2">2</option>
-          <option value="3" selected>3</option>
+          <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
@@ -208,6 +211,10 @@
       </div>
 
     </form>
+    <script>
+      document.getElementById("temp").value = document.getElementById("dtemp").value;
+      document.getElementById("gas").value = document.getElementById("dgas").value;
+    </script>
   </div>
 
 

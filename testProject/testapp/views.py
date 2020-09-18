@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Sensor, State, Probability
+from .models import Sensor, State, Probability, Sensitivity
 from django.utils import timezone
 import requests
 from .bicubicinterpolatearr import do_color
@@ -24,7 +24,17 @@ def location(request):
     return render(request, 'testapp/location.html', {})
     
 def setting(request):
-    return render(request, 'testapp/setting.html', {})
+    sense_db = Sensitivity.objects.all().order_by('-sense_id')[0]
+    sen_gas = sense_db.sense_gas
+    sen_temp = sense_db.sense_temp
+    context = {'sense_gas':sen_gas, 'sense_temp' : sen_temp}
+    if request.method == 'POST':
+        new_sense = Sensitivity()
+        new_sense.sense_gas = request.POST['sense_gas']
+        new_sense.sense_temp = request.POST['sense_temp']
+        new_sense.save()
+        context = {'sense_gas':new_sense.sense_gas, 'sense_temp' : new_sense.sense_temp}          
+    return render(request, 'testapp/setting.html', context=context)
 
 def popup(request):
     return render(request, 'testapp/popup.html', {})
