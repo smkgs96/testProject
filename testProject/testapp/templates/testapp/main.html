@@ -299,19 +299,39 @@
       </table>
     </div>
 
-    <div id="analysisFire" align="center">[화재분석]
-      <div>
+    <div id="analysisFire" align="center" style="text-align: center;">[화재분석]
+      <div style="display: inline-block width: 100%;">
         <img id="emoji" src="">
+        <div id="message"></div>
       </div>
     </div>
     <input type="hidden" id="dstep" value="{{step}}">
     <script>
       var step = parseInt(document.getElementById("dstep").value) + parseInt(3);
-      console.log(parseInt(document.getElementById("dstep").value));
-      console.log(step);
       var img_id = document.getElementById("emoji");
-      var img_src = '/static/img/' + parseInt(step) + '.jpg';
+      var img_src = '/static/img/' + parseInt(step) + '.png';
       img_id.src = img_src;
+      img_id.style.width = '100px';
+      img_id.style.height = '100px';
+      var message = "";
+      switch (step) {
+        case 8:
+          message = "화재 가능성이 매우 높아요. 조심하세요!";
+          break;
+        case 7:
+          message = "평상시보다 화재 가능성이 높아요. 주의하세요!";
+          break;
+        case 6:
+          message = "그럭저럭 나쁘진 않네요. 혹시 모르는 화재에 대비하세요!";
+          break;
+        case 5:
+          message = "좋습니다. 화재가 날 가능성은 거의 없어요!";
+          break;
+        case 4:
+          message = "매우 좋습니다. 화재가 일어나지 않을 것 같아요!";
+          break;
+      }
+      document.getElementById("message").innerHTML = message;
     </script>
     <div id="senState" align="center">[센서상태]
       <table class="table">
