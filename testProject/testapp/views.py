@@ -36,9 +36,6 @@ def setting(request):
         context = {'sense_gas':new_sense.sense_gas, 'sense_temp' : new_sense.sense_temp}          
     return render(request, 'testapp/setting.html', context=context)
 
-def popup(request):
-    return render(request, 'testapp/popup.html', {})
-
 def ifcam(request):
     ifcamlist = Sensor.objects.only('ifcam').order_by('-id')[0].ifcam
     pixel64list = do_color(ifcamlist)
