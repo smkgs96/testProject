@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="ko">
 
 <head>
@@ -283,65 +283,36 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">날짜</th>
-            <th scope="col">센서</th>
-            <th scope="col">값</th>
+            <th scope="col">발생률</th>
+            <th scope="col">단계</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        {% for prob in probs %}
+        <tr>
+          <td>{{prob.prob_id}}</td>
+          <td>{{prob.date.time}}</td>
+          <td>{{prob.percent}}</td>
+          <td>{{prob.step}}</td>
+        </tr>
+        {% endfor %}
         </tbody>
       </table>
     </div>
 
     <div id="analysisFire" align="center">[화재분석]
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">날짜</th>
-            <th scope="col">센서</th>
-            <th scope="col">값</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <img id="emoji" src="">
+      </div>
     </div>
+    <input type="hidden" id="dstep" value="{{step}}">
+    <script>
+      var step = parseInt(document.getElementById("dstep").value) + parseInt(3);
+      console.log(parseInt(document.getElementById("dstep").value));
+      console.log(step);
+      var img_id = document.getElementById("emoji");
+      var img_src = '/static/img/' + parseInt(step) + '.jpg';
+      img_id.src = img_src;
+    </script>
     <div id="senState" align="center">[센서상태]
       <table class="table">
         <thead>

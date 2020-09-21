@@ -10,8 +10,9 @@ import json
 def home(request):
     sensors = Sensor.objects.all().order_by('-id')[:5]
     states = State.objects.all().order_by('-state_num')[:5]
-    probs = Probability.objects.all().order_by('-prob_id')[:1]
-    context = {'sensors': sensors, 'states' : states, 'probs' : probs}
+    probs = Probability.objects.all().order_by('-prob_id')[:5]
+    step = probs[0].step
+    context = {'sensors': sensors, 'states' : states, 'probs' : probs, 'step' : step}
     return render(request, 'testapp/main.html', context=context)
 
 def safety(request):
