@@ -252,55 +252,8 @@
   </div>
   <p></p>
   <div id="section" style="margin-top: 50px; text-align: center;">
-    <div id="senData" align="center">[센서데이터값]
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">날짜</th>
-            <th scope="col">가스</th>
-            <th scope="col">온도</th>
-            <th scope="col">불꽃</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for sensor in sensors %}
-          <tr>
-            <td>{{sensor.id}}</td>
-            <td>{{sensor.date.time}}</td>
-            <td>{{sensor.gas}}</td>
-            <td>{{sensor.temp}}</td>
-            <td>{{sensor.flame}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <div id="predictFire" align="center">[화재발생률]
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">날짜</th>
-            <th scope="col">발생률</th>
-            <th scope="col">단계</th>
-          </tr>
-        </thead>
-        {% for prob in probs %}
-        <tr>
-          <td>{{prob.prob_id}}</td>
-          <td>{{prob.date.time}}</td>
-          <td>{{prob.percent}}</td>
-          <td>{{prob.step}}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <div id="analysisFire" align="center" style="text-align: center;">[화재분석]
-      <div style="display: inline-block width: 100%;">
+    <div id="analysisFire" align="center">[화재분석]
+      <div style="width: 100%; ">
         <img id="emoji" src="">
         <div id="message"></div>
       </div>
@@ -333,6 +286,55 @@
       }
       document.getElementById("message").innerHTML = message;
     </script>
+
+
+    <div id="predictFire" align="center">[화재발생률]
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">날짜</th>
+            <th scope="col">발생률</th>
+            <th scope="col">단계</th>
+          </tr>
+        </thead>
+        {% for prob in probs %}
+        <tr>
+          <td>{{prob.prob_id}}</td>
+          <td>{{prob.date.time}}</td>
+          <td>{{prob.percent}}%</td>
+          <td>{{prob.step}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div id="senData" align="center">[센서데이터값]
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">날짜</th>
+            <th scope="col">가스</th>
+            <th scope="col">온도</th>
+            <th scope="col">불꽃</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sensor in sensors %}
+          <tr>
+            <td>{{sensor.id}}</td>
+            <td>{{sensor.date.time}}</td>
+            <td>{{sensor.gas}}</td>
+            <td>{{sensor.temp}}</td>
+            <td>{{sensor.flame}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
     <div id="senState" align="center">[센서상태]
       <table class="table">
         <thead>
