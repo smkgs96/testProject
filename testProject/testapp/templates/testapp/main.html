@@ -31,24 +31,28 @@
 
   <style>
     body {
-      background: #f3e5f5;
+      /* background: #ffffff; */
       overflow-x: "hidden";
     }
 
     #senData {
-      background: #7e57c2;
+      /* background: #c8c7ce; */
+      font-weight: bold;
     }
 
     #predictFire {
-      background: #9a78d3;
+      /* background:  #c8c7ce; */
+      font-weight: bold;
     }
 
     #analysisFire {
-      background: #8875a5;
+      background: #c8c7ce;
+      font-weight: bold;
     }
 
     #senState {
-      background: #a381dd;
+      /* background:#c8c7ce; */
+      font-weight: bold;
     }
 
     #pills-tab {
@@ -67,11 +71,15 @@
 
     th {
       font-size: 10px;
+      background-color: #000000;
+      color: #ffffff;
     }
+    tbody tr:nth-child(even)  { background-color: #ebe9ea; }
+    tbody tr:nth-child(odd)   { background-color: #b4b7b9; }
 
     .nav-item {
       width: 20%;
-      background: #492d80;
+      background: #4b4a4d;
       font-size: x-small;
     }
 
@@ -85,6 +93,10 @@
       display: inline-block;
       margin-left: 135px;
       /* float: right; */
+    }
+
+    .nav-link{
+        color: #ffffff;
     }
 
     /* 화면 너비 0 ~ 1200px */
@@ -102,7 +114,7 @@
       header {
         width: 100%;
         height: 150px;
-        background: #9575cd;
+        /* background: #9575cd; */
       }
 
       #myLocation {
@@ -143,16 +155,16 @@
         clear: both;
         width: 100%;
         height: 50px;
-        background: #492d80;
+        /* background: #492d80; */
         margin-top: 50px;
         position: absolute;
         bottom: 0;
       }
 
       .nav-item {
-        background: #492d80;
         font-size: x-large;
       }
+
     }
 
     /* 화면 너비 330 ~ 415px */
@@ -192,9 +204,6 @@
     /* 화면 너비 0 ~ 320px */
     @media (max-width: 320px) {
 
-      /* #wrap {
-          width: 95%;
-        } */
       #senData {
         float: none;
       }
@@ -298,6 +307,7 @@
             <th scope="col">단계</th>
           </tr>
         </thead>
+        <tbody>
         {% for prob in probs %}
         <tr>
           <td>{{prob.prob_id}}</td>
@@ -368,7 +378,7 @@
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" onclick="location.href='{% url 'home' %}';">
           <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#" role="tab"
-            aria-controls="pills-home" aria-selected="true">메인화면</a>
+            aria-controls="pills-home" aria-selected="true" style="background-color: red;">메인화면</a>
         </li>
         <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
           <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"

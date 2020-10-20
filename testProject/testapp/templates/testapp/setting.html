@@ -31,15 +31,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <style>
-    body {
+    /* body {
       background: #f3e5f5;
-    }
+    } */
 
     #navigation {
       clear: both;
       width: 100%;
       height: 50px;
-      background: #492d80;
+      /* background: #492d80; */
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -48,7 +48,7 @@
     header {
       width: 100%;
       height: 150px;
-      background: #9575cd;
+      /* background: #9575cd; */
     }
 
     .temperature {
@@ -67,7 +67,12 @@
 
     .nav-item {
       width: 20%;
+      background: #4b4a4d;
       font-size: x-large;
+    }
+
+    .nav-link{
+            color: #ffffff;
     }
 
     #box1 {
@@ -97,7 +102,7 @@
     @media screen and (max-width: 415px) and (min-width: 330px) {
       .nav-item {
         width: 20%;
-        height: 100px;
+        height: 50px;
         font-size: x-small;
       }
 
@@ -170,11 +175,11 @@
       </div>
     </div>
     <p style="margin-top: 20px;"><br><br><br><br></p>
-    <p style="font-weight: bold; margin-bottom: 20px; text-align:left; float: left; background-color: #9575cd;">
+    <p style="margin-bottom: 20px; text-align:left; float: left; background-color: #000000; color: #ffffff;">
       온도민감도 설정
     </p>
-    <p style="font-weight: bold; margin-bottom: 20px; text-align:right;">
-      <span style="background-color: #9575cd;">
+    <p style="margin-bottom: 20px; text-align:right;">
+      <span style="background-color: #000000; color: #ffffff;">
         가스민감도 설정
       </span>
 
@@ -234,7 +239,7 @@
         </li>
         <li class="nav-item" onclick="location.href='{% url 'setting' %}';">
           <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
-            aria-controls="pills-contact" aria-selected="false">설정</a>
+            aria-controls="pills-contact" aria-selected="false" style="background-color: red;">설정</a>
         </li>
       </ul>
   </div>

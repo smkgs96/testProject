@@ -19,13 +19,13 @@
       padding: 0;
     }
 
-    body {
+    /* body {
       background: #f3e5f5;
-    }
+    } */
 
-    #navigation {
+    /* #navigation {
       background: #492d80;
-    }
+    } */
 
     #pills-tab {
       width: 100%;
@@ -34,7 +34,12 @@
 
     .nav-item {
       width: 20%;
+      background: #4b4a4d;
       font-size: x-small;
+    }
+
+    .nav-link{
+        color: #ffffff;
     }
 
     .left {
@@ -54,6 +59,13 @@
       width: 100%;
       object-fit: contain;
     }
+
+    h2{
+      color: red;
+    }
+    /* #myLocation {
+      float: right;
+    } */
 
     /* 화면 너비 0 ~ 1200px */
     @media (min-width: 1220px) {
@@ -130,6 +142,11 @@
 
 <body>
   <div id="wrap">
+    <!-- <div id="myLocation">
+      <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
+        119신고
+      </button>
+    </div> -->
     <div id="fireextinguisher" class="left">
       <h2>소화기 사용법</h2>
       <img class="content" src="/static/img/2.jpg">
@@ -153,7 +170,7 @@
         </li>
         <li class="nav-item" onclick="location.href='{% url 'safety' %}';">
           <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#" role="tab"
-            aria-controls="pills-profile" aria-selected="false">소방안전</a>
+            aria-controls="pills-profile" aria-selected="false" style="background-color: red;">소방안전</a>
         </li>
         <li class="nav-item" onclick="location.href='{% url 'statistics' %}';">
           <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab"
