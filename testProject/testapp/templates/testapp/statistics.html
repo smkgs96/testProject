@@ -7,16 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>통계자료</title>
   <link rel="shortcut icon" href="/static/img/favicon.ico">
+  <script type="text/javascript">
+    window.onload = function create_request() {
+      var API_URL =
+        "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+      $.get(API_URL, deliver);
+    }
+
+    function deliver(response) {
+      var result =
+        "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
+        "<li> 습도: " + response.main.humidity + "% </li>" +
+        "<li> 바람세기: " + response.wind.speed + " mph</li>";
+      $(".temperature").html(result);
+    }
+  </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
-    /* body {
-      background: #f3e5f5;
-    } */
-
     #wrap {
       width: 100%;
       display: flex;
@@ -43,8 +54,6 @@
       clear: both;
       width: 100%;
       height: 50px;
-      /* background: #492d80; */
-      /* margin-top: 50px; */
       position: absolute;
       bottom: 0;
     }
@@ -67,12 +76,31 @@
       text-align: center;
       font-weight: bold;
     }
-
-    /* #myLocation {
-      float: right;
-    } */
+    #myLocation {
+      display: inline-block;
+    }
 
     @media (min-width: 416px) {
+
+      .temperature {
+        position: relative;
+        float: left;
+        left: 400px;
+        top: 20px;
+      }
+      #myLocation {
+        position: relative;
+        float: right;
+        left:  1280px;
+        top: 24px;
+      }
+
+      
+      header {
+        width: 100%;
+        height: 150px;
+      }
+
       #wrap {
         position: absolute;
         top: 50%;
@@ -129,12 +157,12 @@
     }
 
     @media screen and (max-width: 415px) and (min-width: 321px) {
-
-      /* h1,
-      hr {
-        display: none;
-      } */
-
+      #myLocation{
+        position: relative;
+        float: right;
+        top: 20px;
+        left: 120px;
+      }
       #wrap {
         display: block;
       }
@@ -189,7 +217,6 @@
       }
 
       .static {
-        /* margin-top: 10px; */
         width: 100px;
         height: 20px;
       }
@@ -211,12 +238,11 @@
     }
 
     @media (max-width: 320px) {
-
-      h1,
-      hr {
-        display: none;
+      #myLocation{
+        position: relative;
+        float: right;
+        left: 60px;
       }
-
       #wrap {
         display: block;
       }
@@ -293,16 +319,15 @@
 </head>
 
 <body>
-  <!-- <h1 align="center">통계자료</h1>
-  <hr> -->
-  <!-- <div id="myLocation">
-    <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
-      119신고
-    </button>
-  </div> -->
-  <div id="wrap">
-    
-
+  <div id="header">
+    <div class="temperature"></div>
+    <div id="myLocation">
+      <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
+        119신고
+      </button>
+    </div>
+  </div>
+  <div id="wrap">  
     <div class="cause_w">
       <p>[화재원인]</p>
       <div class="cause">
@@ -352,9 +377,9 @@
       </ul>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
+  </script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
   </script>

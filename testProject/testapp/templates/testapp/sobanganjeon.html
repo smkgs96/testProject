@@ -7,6 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>소방안전</title>
   <link rel="shortcut icon" href="/static/img/favicon.ico">
+  <script type="text/javascript">
+    window.onload = function create_request() {
+      var API_URL =
+        "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+      $.get(API_URL, deliver);
+    }
+
+    function deliver(response) {
+      var result =
+        "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
+        "<li> 습도: " + response.main.humidity + "% </li>" +
+        "<li> 바람세기: " + response.wind.speed + " mph</li>";
+      $(".temperature").html(result);
+    }
+  </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -63,12 +78,30 @@
     h2{
       color: red;
     }
-    /* #myLocation {
-      float: right;
-    } */
+
+    #myLocation {
+      display: inline-block;
+    }
+
+    header {
+      width: 100%;
+      height: 150px;
+    }
 
     /* 화면 너비 0 ~ 1200px */
     @media (min-width: 1220px) {
+      .temperature {
+      position: absolute;
+      float: left;
+      top: 20px;
+      left: 400px;      
+      }
+      #myLocation{
+        position: relative;
+        float: right;
+        left: -400px;
+      }
+      
       #navigation {
         clear: both;
         width: 100%;
@@ -92,6 +125,16 @@
 
     /* 화면 너비 0 ~ 768px */
     @media all and (max-width: 415px) and (min-width: 330px) {
+      .temperature {
+        position: absolute;
+        float: left;
+        top: 20px;      
+      }
+      #myLocation{
+        /* position: absolute; */
+        
+        float: right; 
+      }
       .left {
         float: none;
         width: 100%;
@@ -121,6 +164,14 @@
 
     /* 화면 너비 0 ~ 320px */
     @media (max-width: 320px) {
+      .temperature {
+      position: absolute;
+      float: left;
+      top: 20px;      
+    }
+      #myLocation{
+        float: right; 
+    }
       .left {
         float: none;
         width: 100%;
@@ -142,21 +193,24 @@
 
 <body>
   <div id="wrap">
-    <!-- <div id="myLocation">
-      <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
-        119신고
-      </button>
-    </div> -->
+    <div id="header">
+      <div class="temperature"></div>
+      <div id="myLocation">
+        <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
+          119신고
+        </button>
+      </div>
+    </div>
     <div id="fireextinguisher" class="left">
-      <h2>소화기 사용법</h2>
+      <h2 style="margin-top: 60px;">소화기 사용법</h2>
       <img class="content" src="/static/img/2.jpg">
     </div>
     <div id="sohwajeon" class="right">
-      <h2>소화전 사용법</h2>
+      <h2 style="margin-top: 22px;">소화전 사용법</h2>
       <img class="content" src="/static/img/3.jpg">
     </div>
     <div id="simpe" class="right">
-      <h2>심폐소생술</h2>
+      <h2 style="margin-top: 22px;">심폐소생술</h2>
       <img class="content" src="/static/img/1.jpg">
     </div>
   </div>
@@ -187,12 +241,9 @@
       </ul>
   </div>
 
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
+  </script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
   </script>

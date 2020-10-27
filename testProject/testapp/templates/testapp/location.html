@@ -7,6 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>위치 기반 안내</title>
     <link rel="shortcut icon" href="/static/img/favicon.ico">
+
+    <!-- <script type="text/javascript">
+        window.onload = function create_request() {
+          var API_URL =
+            "https://api.openweathermap.org/data/2.5/weather?q=daegu&units=metric&appid=caf2328dfcf6f9f9919e7039d6066892";
+          $.get(API_URL, deliver);
+        }
+    
+        function deliver(response) {
+          var result =
+            "<li> 현재온도: " + response.main.temp + " ℃ </li>" +
+            "<li> 습도: " + response.main.humidity + "% </li>" +
+            "<li> 바람세기: " + response.wind.speed + " mph</li>";
+          $(".temperature").html(result);
+        }
+    </script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -14,10 +30,6 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
-        /* body {
-            background: #f3e5f5;
-        } */
-
         #navigation {
             clear: both;
             width: 100%;
@@ -195,18 +207,22 @@
             margin-top: 0;
         }
 
-        /* @media (max-width: 767px) {
-
-            aside {
-                width: 100%;
-                height: 300px;
+        /* .temperature {
+                position: relative;
+                float: left;
+                left: 400px;
+                top: 20px;
             }
-
-            section {
-                width: 100%;
-                height: 300px;
+            #myLocation {
+                position: relative;
+                float: right;
+                left:  1280px;
+                top: 24px;
             }
-        } */
+            header {
+                width: 100%;
+                height: 150px;
+            } */
 
         @media screen and (max-width: 415px) and (min-width: 330px) {
             .nav-item {
@@ -239,10 +255,6 @@
                 height: 300px;
             }
 
-            #myLocation {
-                float: right;
-            }
-
             #navigation {
                 float: none;
                 clear: both;
@@ -259,6 +271,14 @@
     <input type="hidden" id="varloc" name="varloc" value="{{location}}">
     <h1 align="center"></h1>
     <br>
+    <!-- <div id="header">
+        <div class="temperature"></div>
+        <div id="myLocation">
+          <button onclick="document.location.href='tel:119'" type="button" class="btn btn-secondary">
+            119신고
+          </button>
+        </div>
+    </div> -->
 
     <input type="button" value="소방서" id="onoff" onclick="onoff();">
     <hr>
